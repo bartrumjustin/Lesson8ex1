@@ -53,6 +53,20 @@
                 Console.WriteLine($"{count}: " + entry.Name + "\n");
             }
             Console.WriteLine(count);
+            var sortBirthYear = stemPeople.OrderBy(y => y.BirthYear);
+            Console.WriteLine("people sorted by birth year from unknown to latest: \n");
+            foreach (var entry in sortBirthYear)
+            {
+                Console.WriteLine(entry.Name + " " + entry.BirthYear + "\n");
+            }
+            var deathYear = stemPeople
+                .Where(dY => dY.DeathYear > 1960 && dY.DeathYear < 2015)
+                .OrderBy(dY => dY.Name);
+            Console.WriteLine("Deaths > 1960 and < 2015 in ascending name order: \n");
+            foreach (var death in deathYear)
+            {
+                Console.WriteLine(death.Name + " " + death.DeathYear + "\n");
+            }
         }
     }
 }
